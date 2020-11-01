@@ -21,7 +21,7 @@ CREATE TABLE if not exists `account` (
     email			text not null,
     user_name		varchar(50) not null,
     full_name		nvarchar(50) not null,
-    deparment_id	tinyint unsigned ,
+    department_id	tinyint unsigned ,
     foreign key (department_id) references department (department_id),
     position_id		tinyint unsigned ,
     foreign key (position_id) references position (position_id),
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS category_question (
     
 DROP TABLE IF EXISTS question;
 CREATE TABLE IF NOT EXISTS question (
-	contenr			text,
+	content			text,
     category_id 	TINYINT UNSIGNED DEFAULT 2,
     foreign key(category_id) references category_question (category_id),
     type_id			TINYINT UNSIGNED DEFAULT 2,
