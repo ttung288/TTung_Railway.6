@@ -41,8 +41,8 @@ create table if not EXISTS `group` (
 DROP TABLE IF EXISTS group_account;
 create TABLE IF NOT EXISTS group_account(
 	group_id 		TINYINT UNSIGNED DEFAULT 2,
-    FOREIGN KEY (group_id) REFERENCES `group` (group_id),
     account_id		tinyint UNSIGNED,
+    PRIMARY KEY (group_id,account_id),
     join_date DATE
     );
 	
