@@ -21,10 +21,10 @@ CREATE TABLE if not exists `account` (
     email			text not null,
     user_name		varchar(50) not null,
     full_name		nvarchar(50) not null,
-    deparment_id	tinyint unsigned default 2,
-    foreign key (department_id) references department (deparment_name),
-    position_id		tinyint unsigned default 2,
-    foreign key (position_name) references position (position_name),
+    deparment_id	tinyint unsigned ,
+    foreign key (department_id) references department (department_id),
+    position_id		tinyint unsigned ,
+    foreign key (position_id) references position (position_id),
     create_date		date
 );
 
@@ -92,12 +92,11 @@ CREATE TABLE IF NOT EXISTS exam(
     create_date date
    );
    
-DROP TABLE IF EXISTS `11`;
-CREATE TABLE IF NOT EXISTS `11`(
+DROP TABLE IF EXISTS exam_question;
+CREATE TABLE IF NOT EXISTS exam_question(
 	exam_id 	TINYINT UNSIGNED DEFAULT 2,
-    FOREIGN KEY (exam_id) REFERENCES exam (exam_id),
     question_id	TINYINT UNSIGNED DEFAULT 2,
-    FOREIGN KEY (question_id) REFERENCES answer (question_id)
+	PRIMARY KEY (exam_id,question_id)
     );
 	
     
