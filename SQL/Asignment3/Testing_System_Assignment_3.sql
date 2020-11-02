@@ -184,5 +184,8 @@ UPDATE `account`
 SET account_id = "4"
 WHERE account_id = "5";
 
+-- Quesstion 12: Xóa tất cả các exam được tạo trước 20/12/2019
+SET FOREIGN_KEY_CHECKS = 0;
+DELETE FROM exam WHERE create_date > '2019-12-20';
 			
                         
