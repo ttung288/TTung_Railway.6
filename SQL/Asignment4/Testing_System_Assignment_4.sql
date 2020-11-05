@@ -1,7 +1,7 @@
 -- create database
-DROP DATABASE IF EXISTS Testing_System_Assignment_1;
-CREATE DATABASE IF NOT EXISTS Testing_System_Assignment_1;
-USE Testing_System_Assignment_3;
+DROP DATABASE IF EXISTS Testing_System_Assignment_4;
+CREATE DATABASE IF NOT EXISTS Testing_System_Assignment_4;
+USE Testing_System_Assignment_4;
 
 
 --  create table1: Department
@@ -273,3 +273,124 @@ VALUES						(1			, 10			),
                             (8			, 3				),
                             (9			, 2				),
                             (10			, 1				);
+                            
+-- Assignment 4
+-- Question 1: Viết lệnh để lấy ra danh sách nhân viên và thông tin phòng ban của họ
+SELECT  *
+FROM `account` a 
+LEFT JOIN department d ON d.department_id = a.department_id; 
+
+-- Question 2: Viết lệnh để lấy ra thông tin các account được tạo sau ngày 20/12/2010
+SELECT *
+FROM `account`
+WHERE create_date > '2010-12-20';
+
+-- Question 3: Viết lệnh để lấy ra tất cả các developer
+SELECT * 
+FROM `account` a 
+JOIN position p ON p.position_id = a.position_id
+WHERE p.position_name = 'Dev';
+
+-- Question 4: Viết lệnh để lấy ra danh sách các phòng ban có >2 nhân viên
+SELECT *,COUNT(*)
+FROM department d
+LEFT JOIN `account` a  ON d.department_id = a.department_id
+GROUP BY d.department_id HAVING COUNT(*) >= 2;
+
+-- Question 5: Viết lệnh để lấy ra danh sách câu hỏi được sử dụng trong đề thi nhiều nhất
+SELECT *,COUNT(*)
+FROM question q
+JOIN exam_question eq ON q.question_id = eq.question_id
+GROUP BY eq.question_id
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+/*======Exercise1========*/
+-- Question 6: Thông kê mỗi category Question được sử dụng trong bao nhiêu Question
+SELECT *
+FROM category_question cq
+LEFT JOIN question q ON cq.category_id = q.category_id;
+
+-- Question 7: Thông kê mỗi Question được sử dụng trong bao nhiêu Exam
+SELECT *, COUNT(eq.exam_id) AS soluongdethi
+FROM question q
+LEFT JOIN exam_question eq ON eq.question_id = q.question_id
+GROUP BY q.question_id
+; 
+
+-- Question 8: Lấy ra Question có nhiều câu trả lời nhất
+SELECT *,COUNT(a.answer_id) as soluongcautraloi
+FROM question q
+LEFT JOIN answer a ON q.question_id = a.question_id
+GROUP BY q.question_id ORDER BY COUNT(a.answer_id) DESC;
+
+-- Question 9: Thống kê số lượng account trong mỗi group
+SELECT *,COUNT(ga.group_id) AS soluongaccount
+FROM `account` a 
+LEFT JOIN group_account ga ON ga.account_id = a.account_id
+GROUP BY a.account_id ;
+ 
+-- Question 10: Tìm chức vụ có ít người nhất
+SELECT *, COUNT(a.account_id) AS songuoi
+FROM position p
+LEFT JOIN `account` a ON a.position_id = p.position_id
+GROUP BY p.position_id ORDER BY COUNT(a.account_id) DESC ;
+
+-- Question 11: Thống kê mỗi phòng ban có bao nhiêu dev, test, scrum master, PM
+SELECT *,COUNT(p.position_name) AS songuoi
+FROM `account` a 
+JOIN position p ON p.position_id = a.position_id
+WHERE p.position_name = 'Dev'
+
+UNION
+
+SELECT *,COUNT(p.position_name) 
+FROM `account` a 
+JOIN position p ON p.position_id = a.position_id
+WHERE p.position_name = 'Test'
+
+UNION
+
+SELECT *,COUNT(p.position_name) 
+FROM `account` a 
+JOIN position p ON p.position_id = a.position_id
+WHERE p.position_name = 'Scrum Master'
+
+UNION
+
+SELECT *,COUNT(p.position_name) 
+FROM `account` a 
+JOIN position p ON p.position_id = a.position_id
+WHERE p.position_name = 'PM';
+
+-- Question 12: Lấy thông tin chi tiết của câu hỏi bao gồm: 
+-- thông tin cơ bản của question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, ...
+
+
+-- Question 13: Lấy ra số lượng câu hỏi của mỗi loại tự luận hay trắc nghiệm
+SELECT *, COUNT(q.question_id)
+FROM type_question tq
+LEFT JOIN question q ON q.type_id = tq.type_id
+GROUP BY type_name;
+
+-- Question 14, 15: Lấy ra group không có account nào
+SELECT *
+FROM `group` g
+LEFT JOIN `group_account` a ON a.group_id = g.group_id
+WHERE a.account_id IS NULL
+;
+
+/*=====Exercise2===*/
+-- Question 17:
+SELECT *
+FROM `account` a
+JOIN group_account ga ON ga.account_id = a.account_id
+WHERE ga.group_id = 1
+
+UNION
+
+SELECT *
+FROM `account` a
+JOIN group_account ga ON ga.account_id = a.account_id
+WHERE ga.group_id = 2;
+
+-- Question 18:
