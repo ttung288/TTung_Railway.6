@@ -1,0 +1,25 @@
+.a {
+    text-align: center;
+}
+
+.b {
+    margin-left: 370px;
+}
+
+.c {
+    margin-left: 500px;
+}
+
+.d {
+    margin-left: 500px;
+    margin-right: 500px;
+    text-align: center;
+}
+
+.table {
+    margin-left: 25%;
+    color: green;
+    background-color: greenyellow;
+    text-align: left;
+    width: 50%;
+}
