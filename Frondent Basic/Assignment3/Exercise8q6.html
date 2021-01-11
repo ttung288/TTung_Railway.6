@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <div>
+        <h2>Form Khảo Sát thông tin cá nhân:</h2>
+        <table border="1px">
+            <tr>
+                <td>Họ tên:</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Số điện thoại:</td>
+                <td><input type="number" id="phone"></td>
+            </tr>
+            <tr>
+                <td>Giới tính:</td>
+                <td>
+                    <form action="">
+                        <input type="radio" name="gender" value="Nam" class="gender" checked> Nam <input type="radio" name="gender" value="Nữ" class="gender"> Nữ
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>Sở Thích</td>
+                <td>
+                    <form action="">
+                        <input type="checkbox" name="hobby" value="Nghe Nhạc" class="hobby"> Nghe Nhạc <br>
+                        <input type="checkbox" name="hobby" value="Bóng Đá" class="hobby"> Bóng Đá <br>
+                        <input type="checkbox" name="hobby" value="Du Lịch" class="hobby"> Du Lịch <br>
+                        <input type="checkbox" name="hobby" value="Đọc Sách" class="hobby"> Đọc Sách
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <button onclick="myFuntion()">Click nào!!!</button>
+        <script>
+            function myFuntion() {
+                var hoten = document.getElementById("name").value;
+                var sdt = document.getElementById("phone").value;
+                var gender = "";
+                var gioitinh = document.getElementsByClassName("gender");
+                var hobby = "";
+                var sothich = document.getElementsByClassName("hobby");
+
+                for (var i = 0; i < gioitinh.length; i++) {
+                    if (gioitinh[i].checked) {
+                        //  alert(gioitinh[i].value)
+                        gender = gioitinh[i].value;
+                    }
+                }
+                for (var i = 0; i < sothich.length; i++) {
+                    if (sothich[i].checked) {
+                        hobby += sothich[i].value + " ";
+                    }
+                }
+
+                alert("Họ Tên: " + hoten + " SĐT: " + sdt + " Giới tính: " + gender + " Sở Thích: " + hobby);
+            }
+        </script>
+    </div>
+</body>
+
+</html>

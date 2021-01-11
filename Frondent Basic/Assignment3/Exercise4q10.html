@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <p>Nhập s1 :</p>
+    <input type="number" id="number1">
+    <p>Nhập s2 :</p>
+    <input type="number" id="number2">
+    <button onclick="tong()" value="Cộng">Cộng</button>
+    <button onclick="tru()" value="Trừ">Trừ</button>
+    <button onclick="nhan()" value="Nhân">Nhân</button>
+    <button onclick="chia()" value="Chia">Chia</button>
+    <button onclick="chiadu()" value="Chia Dư">%</button>
+
+    <p id="demo">Kết quả: <span></span></p>
+    <script>
+        function tong() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+
+            document.getElementById("demo").innerHTML =
+                "Tổng: " + (s1 + s2);
+        }
+
+        function tru() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+
+            document.getElementById("demo").innerHTML =
+                "Hiệu: " + (s1 - s2);
+        }
+
+        function nhan() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+
+            document.getElementById("demo").innerHTML =
+                "Tích: " + (s1 * s2);
+        }
+
+        function chia() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+
+            document.getElementById("demo").innerHTML =
+                "Thương: " + (s1 / s2);
+        }
+
+        function chiadu() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+
+            document.getElementById("demo").innerHTML =
+                "Phần: " + (s1 % s2);
+        }
+    </script>
+
+</body>
+
+</html>

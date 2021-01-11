@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <!-- <form name="nhap" >
+       
+    </form> -->
+    Nhập số a:
+    <input type="text" id="a">
+    <p>Nhập số b:
+        <input type="text" id="b">
+    </p>
+    <p>Nhập số c:
+        <input type="text" id="c">
+    </p>
+
+    <button onClick="ptbh()" value="Giải"> Giải</button>
+    <p id="ketqua">Kết Quả: <label for="Kết Quả"> </label></p>
+
+    <script type="text/javascript" language="javascript">
+        function ptbh() {
+            var a, b, c, delta, x, x1, x2;
+            a = document.getElementById("a").value;
+            b = document.getElementById("b").value;
+            c = document.getElementById("c").value;
+            delta = b * b - 4 * a * c;
+            if (delta < 0) {
+                document.getElementById("ketqua").innerHTML = " Phương trình vô nghiệm ";
+            } else if (delta == 0) {
+                x = -b / 2 * a;
+                document.getElementById("ketqua").innerHTML = "Kết Quả: " + x;
+            } else if (delta > 0) {
+                x1 = (-b + Math.sqrt(delta)) / (2 * a);
+
+                x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                document.getElementById("ketqua").innerHTML = "Kết Quả: "
+                "x1=" + x1 + " , x2=" + x2;
+            }
+        }
+    </script>
+</body>
+
+</html>
